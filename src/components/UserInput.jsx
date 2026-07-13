@@ -1,22 +1,7 @@
 import React from "react";
-import { useState } from "react";
 
-const UserInput = () => {
-    const [userInputs, setUserInputs] = useState({
-        initialInvestment: 10000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10,
-    });
+const UserInput = ({ userInputs, onChange }) => {
 
-function handleChange(inputIdentifier, newValue) {
-setUserInputs(prevUserInputs => {
-    return {
-        ...prevUserInputs,
-        [inputIdentifier]: newValue
-    }
-})
-}
 
   return (
     <section id="user-input">
@@ -28,7 +13,7 @@ setUserInputs(prevUserInputs => {
             placeholder="e.g., 10000" 
             required 
             value={userInputs.initialInvestment}
-            onChange={(e) => handleChange('initialInvestment', parseFloat(e.target.value) || 0)}
+            onChange={(e) => onChange('initialInvestment', parseFloat(e.target.value) || 0)}
           ></input>
         </p>
         <p>
@@ -38,7 +23,7 @@ setUserInputs(prevUserInputs => {
             placeholder="e.g., 1200" 
             required 
             value={userInputs.annualInvestment}
-            onChange={(e) => handleChange('annualInvestment', parseFloat(e.target.value) || 0)}
+            onChange={(e) => onChange('annualInvestment', parseFloat(e.target.value) || 0)}
           ></input>
         </p>
       </div>
@@ -50,7 +35,7 @@ setUserInputs(prevUserInputs => {
             placeholder="e.g., 6" 
             required 
             value={userInputs.expectedReturn}
-            onChange={(e) => handleChange('expectedReturn', parseFloat(e.target.value) || 0)}
+            onChange={(e) =>  onChange('expectedReturn', parseFloat(e.target.value) || 0)}
           ></input>
         </p>
         <p>
@@ -60,7 +45,7 @@ setUserInputs(prevUserInputs => {
             placeholder="e.g., 10" 
             required 
             value={userInputs.duration}
-            onChange={(e) => handleChange('duration', parseFloat(e.target.value) || 0)}
+            onChange={(e) => onChange('duration', parseFloat(e.target.value) || 0)}
           ></input>
         </p>
       </div>
