@@ -10,6 +10,8 @@ function App() {
         expectedReturn: 6,
         duration: 10,
     });
+
+    const inputIsValid = userInputs.initialInvestment > 0 && userInputs.annualInvestment > 0 && userInputs.expectedReturn > 0 && userInputs.duration > 0;
     
 function handleChange(inputIdentifier, newValue) {
 setUserInputs(prevUserInputs => {
@@ -24,7 +26,8 @@ setUserInputs(prevUserInputs => {
     <>
    <Header  />
    <UserInput userInputs={userInputs} onChange={handleChange} />
-   <Results input={userInputs} />
+   {!inputIsValid && <p className="center">Please enter valid values for all fields.</p>}
+  { inputIsValid && <Results input={userInputs} /> }
    </>
   )
 }
